@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<title>Car Damage Analyzer</title>
+<!-- stylesheets -->
+<link href="//maxcdn.bootstrapcdn.com/bootswatch/3.2.0/yeti/bootstrap.min.css" rel="stylesheet" media="screen">
+<link href="{{ url_for('static', filename='main.css') }}" rel="stylesheet">
+<style> 
+input[type=file] {
+  width: 30%;
+  padding: 0px 2px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+</style>
+<style>
+input[type=submit] {
+  width: 14%;
+  padding: 1px 2px;
+  margin: 8px 0;
+  box-sizing: border-box;
+</style>
+<div class="row">
+  <div class="col-md-7">
+    <h1>AI based car damage analyzer</h1>
+	<h5>Detect presence of any damage in car along with severity</h5>
+    <br>
+    <br>
+    <form id="upload-form" action="{{url_for('upload') }}" method="POST" enctype="multipart/form-data">
+      <input type="file" name="file" accept="image/*">
+      <input type="submit" value="Upload image">
+    </form>
+    <table class="table" id="results-table">
+        <tr>
+          <th>{{label1}}</th>
+	  <br>
+          <th>{{label2}}</th>
+	  <br>
+	  <th>{{label3}}</th>
+	</tr>
+	<tr>
+          {% block content %}{% endblock %}
+        </tr>
+    </table>
+  </div>
+</div>
+</html>
+ 
